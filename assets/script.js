@@ -8,7 +8,7 @@ var placeName = document.querySelector("#placeName");
 
 `${getAPI} ajdflkajslkgsrlkgksld`
 
-fetch(geoCode)
+fetch(getAPI)
     .then(function (response) {
         console.log(response)
         response.json().then(function(data){
@@ -30,10 +30,20 @@ fetch(geoCode)
         //     console.log(JSON.parse(data));
         //   });
 
+        // fetch('https://api.positionstack.com/v1/forward',{
+            
+        //     access_key: '49a90276b4b1f782b1cb30297278b6dd',
+        //       query: '1600 Pennsylvania Ave NW - Washington',
+        //       limit: 1
+        // }
+        // ).done(function(data){
+        //     console.log(JSON.parse(data));
+        // })
+
 var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276b4b1f782b1cb30297278b6dd&query=1600 Pennsylvania Ave NW - Washington"
 
 
-var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle" //+ searchInput
+var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 
 // fetch(positionstack)
 //           .then(function(response){
@@ -48,14 +58,20 @@ var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntuj
 //var secondAttempt = "https://geocode.search.hereapi.com/v1/geocode?q=BattySt+6+Rozelle&apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc"
 
 
+//THIS WORKS!!!!!!!!!!!!!! WE JUST NEED TO SUMMON THE LAT AND LONG
+
 fetch(geoCode)
 .then(function (response) {
   return response.json();
 })
 .then(function (data) {
     console.log(data)
+    debugger
 })
 
+// fetch(geoCode)
+//     .then(response)
+//     console.log(response)
 
 
 // We need to call a Latitude and Longitude when entering the names of locations.
@@ -83,3 +99,23 @@ fetch(geoCode)
 // ?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc
 // &searchtext=425+W+Randolph+Chicago
 
+
+const autosuggest = (e) => {
+    if(event.metaKey) {
+      return
+    } 
+    let searchString = e.value
+    if (searchString != "") {
+      fetch(`https://autosuggest.search.hereapi.com/v1/autosuggest?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&at=33.738045,73.084488&limit=5&resultType=city&q=${searchString}&lang=en-US`)
+      .then(res => res.json())
+      .then((json) => {
+        if (json.length != 0) {
+          document.getElementById("list").innerHTML = ``;
+          let dropData = json.items.map((item) => {
+            if ((item.position != undefined) & (item.position != ""))
+              document.getElementById("list").innerHTML += `<li onClick="addMarkerToMap(${item.position.lat},${item.position.lng})">${item.title}</li>`;
+            });
+        }
+      });
+    }
+  };

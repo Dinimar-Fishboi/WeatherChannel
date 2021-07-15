@@ -66,8 +66,31 @@ fetch(geoCode)
 })
 .then(function (data) {
     console.log(data)
-    debugger
+    // var searchLong = (data.Response.View[0].Result[0].Location.DisplayPosition.Latitude).val;
+    // var searchLat = (data.Response.View[0].Result[0].Location.DisplayPosition.Longitude).val;
+    // console.log(searchLat);
+    // console.log(searchLong);
+    
+    // debugger
+
 })
+
+fetch(geoCode)
+.then(function (response) {
+  return response.json();
+})
+.then(function (data) {
+    console.log(data)
+    var searchLong = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+    var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+    console.log(searchLat);
+    console.log(searchLong);
+    
+    debugger
+
+})
+
+ 
 
 // fetch(geoCode)
 //     .then(response)

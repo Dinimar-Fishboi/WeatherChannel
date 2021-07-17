@@ -5,6 +5,7 @@ var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntuj
 var prevSearch = document.getElementById("prevSearch");
 var placeName = document.querySelector("#placeName");
 var searchInput = document.querySelector("#searchInput");
+var requestedForcast = "";
 //var potentialLocations = [];
 
 //var searchInput = "Rozelle"
@@ -47,6 +48,8 @@ fetch(getWeather)
 $("#prevSearch").on("click", function(){
   var prevChoice = event.target.textContent
   console.log(prevChoice); 
+  var requestedForcast = prevChoice;
+  summonWeather(requestedForcast);
 })
 
 //section details how to add new searches to the localStorage, and adding the
@@ -68,6 +71,8 @@ $("#locationSearch").on("click", function() {
           newSearchAdd.innerHTML = newSearch;
           console.log(newSearchAdd);
           prevSearch.appendChild(newSearchAdd);
+          var requestedForcast = newSearch;
+          summonWeather(requestedForcast);
 });
 
 // Providing content for HTML page on load.
@@ -118,6 +123,13 @@ var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276
 var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 
 
+// The 'event' in this instance is actually the location that we we will need to 
+// find the Latitude and Longitude for.
+function summonWeather(event){
+  console.log("Okay - let's GO");
+  console.log(event);
+
+}
 // We need to call a Latitude and Longitude when entering the names of locations.
 
 // We are going to need to add prev. searches to the local storage, that the 

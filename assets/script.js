@@ -2,7 +2,7 @@
 
 var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
 var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
-
+var prevSearch = document.getElementById("prevSearch");
 var placeName = document.querySelector("#placeName");
 
 //var searchInput = "Rozelle"
@@ -15,7 +15,7 @@ fetch(getWeather)
         response.json().then(function(data){
             var openSun = data;
             console.log(openSun)
-            debugger
+          //  debugger
             
         })
         })
@@ -31,9 +31,26 @@ fetch(getWeather)
     console.log(searchLat);
     console.log(searchLong);
     
-    debugger
+  //  debugger
 
 })
+
+$("#locationSearch").on("click", function() {
+  console.log("have pressed a button");
+  var newSearch = $(this).parent().siblings("#searchInput").val();
+        console.log(newSearch)
+        // var hourTime = $(this).parent().attr("id");
+         localStorage.setItem("prevSearch", JSON.stringify(newSearch));
+        // console.log(hourTime)
+        var oldSearch = document.createElement('li');
+        var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+        oldSearch.innerHTML = showLocations
+        prevSearch.appendChild(oldSearch);
+
+});
+
+//$("#08 #activityInput").val(localStorage.getItem("prevSearch"));
+
 
         // $("#search").ajax({
         //     url: 'https://api.positionstack.com/v1/forward',

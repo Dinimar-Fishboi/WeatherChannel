@@ -1,15 +1,15 @@
 //Need Latitude and Longitude to complete API call. Have added own API already
 
-var getAPI = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
+var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
 var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 
 var placeName = document.querySelector("#placeName");
 
 //var searchInput = "Rozelle"
 
-`${getAPI} ajdflkajslkgsrlkgksld`
+`${getWeather} ajdflkajslkgsrlkgksld`
 
-fetch(getAPI)
+fetch(getWeather)
     .then(function (response) {
         console.log(response)
         response.json().then(function(data){
@@ -60,43 +60,6 @@ var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276
 
 
 var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
-
-// fetch(positionstack)
-//           .then(function(response){
-//             console.log(response)
-//             response.json().then(function(data){
-//                 console.log(data)
-//                 debugger
-//             })
-
-//           })
-
-//var secondAttempt = "https://geocode.search.hereapi.com/v1/geocode?q=BattySt+6+Rozelle&apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc"
-
-
-//THIS WORKS!!!!!!!!!!!!!! WE JUST NEED TO SUMMON THE LAT AND LONG
-
-// fetch(geoCode)
-// .then(function (response) {
-//   return response.json();
-// })
-// .then(function (data) {
-//     console.log(data)
-//     var searchLong = (data.Response.View[0].Result[0].Location.DisplayPosition.Latitude).val;
-//     var searchLat = (data.Response.View[0].Result[0].Location.DisplayPosition.Longitude).val;
-//     console.log(searchLat);
-//     console.log(searchLong);
-    
-//     debugger
-
-// })
-
-
- 
-
-// fetch(geoCode)
-//     .then(response)
-//     console.log(response)
 
 
 // We need to call a Latitude and Longitude when entering the names of locations.

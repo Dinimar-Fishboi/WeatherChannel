@@ -1,19 +1,19 @@
 * {
     color: black;
-    
+
 }
 
 #Am-Pm {
     color: red;
 }
 
+/*
 .locations {
     width: 30%; 
     margin: 3%;
-}
+}*/
 
 li {
-    list-style: none;
     background-color: aliceblue ;
     color: black;
 }

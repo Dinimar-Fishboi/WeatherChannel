@@ -37,37 +37,95 @@ fetch(getWeather)
 
 })
 
-$("#locationSearch").on("click", function() {
-  console.log("have pressed a button");
-  var newSearch = $(this).parent().siblings("#searchInput").val();
-        console.log(newSearch)
-        potentialLocations = potentialLocations.concat(newSearch);
-        // var hourTime = $(this).parent().attr("id");
 
-         localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
-        // console.log(hourTime)
-        searchInput.value = '';
-         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
-        // console.log(showLocations);
+//if (localStorage.setItem("prevSearch", JSON.stringify("")) === null){
+ 
+ // localStorage.setItem("prevSearch", JSON.stringify(""));
 
-
-        for (i=0; i < showLocations.length; i++) {
-          var oldSearch = document.createElement('li');
-          oldSearch.innerHTML = showLocations[i];
-          prevSearch.appendChild(oldSearch);
-        }
-
-});
-
+//$("#prevsearch li").val(localStorage.getItem("prevSearch"))
 var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
 console.log(showLocations);
-var potentialLocations = showLocations;
 
+if (!showLocations){
+console.log("Empty localStorage");
+ localStorage.setItem("prevSearch", JSON.stringify(""));
+ var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+ console.log(showLocations);
+//var potentialLocations = showLocations;
+ var potentialLocations = [""];
+} else {
+  var potentialLocations = showLocations;
+
+}
+
+
+// if (!showLocations === null){
 for (i=0; i < showLocations.length; i++) {
   var oldSearch = document.createElement('li');
   oldSearch.innerHTML = showLocations[i];
   prevSearch.appendChild(oldSearch);
-}
+// } } else {
+//   var oldSearch = document.createElement('li');
+//  potentialLocations = [];
+ }
+
+ $("#clearSearch").on("click", function(){
+
+  // localStorage.setItem("prevSearch","");
+     localStorage.removeItem("prevSearch");
+     localStorage.setItem("prevSearch","");
+     localStorage.setItem("prevSearch", JSON.stringify(""));
+ 
+    // prevSearch.removeChild(oldSearch);
+     document.getElementById('prevSearch').innerHTML = "";
+ 
+     //localStorage.setItem("prevSearch", "");
+     var potentialLocations = showLocations;
+     console.log(showLocations);
+     potentialLocations = [""];
+     console.log(potentialLocations);
+ })
+
+$("#locationSearch").on("click", function() {
+  console.log("have pressed a button");
+  var newSearch = $(this).parent().siblings("#searchInput").val();
+        console.log(newSearch)
+        console.log(potentialLocations)
+        potentialLocations = potentialLocations.concat(newSearch);
+        console.log(potentialLocations)
+
+         localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
+         searchInput.value = '';
+         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+         console.log(showLocations);
+
+
+          var newSearchAdd = document.createElement('li');
+          newSearchAdd.innerHTML = newSearch;
+          console.log(newSearchAdd);
+          prevSearch.appendChild(newSearchAdd);
+        
+
+});
+
+
+
+// $("#clearSearch").on("click", function(){
+
+//  // localStorage.setItem("prevSearch","");
+//     localStorage.removeItem("prevSearch");
+//     localStorage.setItem("prevSearch","");
+//     localStorage.setItem("prevSearch", JSON.stringify(""));
+
+//    // prevSearch.removeChild(oldSearch);
+//     document.getElementById('prevSearch').innerHTML = "";
+
+//     //localStorage.setItem("prevSearch", "");
+//     var potentialLocations = showLocations;
+//     console.log(showLocations);
+//     potentialLocations = [""];
+//     console.log(potentialLocations);
+// })
 
 // for (i=0; i < potentialLocations.length; i++) {
 //         var oldSearch = document.createElement('li')
@@ -132,22 +190,22 @@ var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntuj
 // &searchtext=425+W+Randolph+Chicago
 
 
-const autosuggest = (e) => {
-    if(event.metaKey) {
-      return
-    } 
-    let searchString = e.value
-    if (searchString != "") {
-      fetch(`https://autosuggest.search.hereapi.com/v1/autosuggest?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&at=33.738045,73.084488&limit=5&resultType=city&q=${searchString}&lang=en-US`)
-      .then(res => res.json())
-      .then((json) => {
-        if (json.length != 0) {
-          document.getElementById("list").innerHTML = ``;
-          let dropData = json.items.map((item) => {
-            if ((item.position != undefined) & (item.position != ""))
-              document.getElementById("list").innerHTML += `<li onClick="addMarkerToMap(${item.position.lat},${item.position.lng})">${item.title}</li>`;
-            });
-        }
-      });
-    }
-  };
+// const autosuggest = (e) => {
+//     if(event.metaKey) {
+//       return
+//     } 
+//     let searchString = e.value
+//     if (searchString != "") {
+//       fetch(`https://autosuggest.search.hereapi.com/v1/autosuggest?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&at=33.738045,73.084488&limit=5&resultType=city&q=${searchString}&lang=en-US`)
+//       .then(res => res.json())
+//       .then((json) => {
+//         if (json.length != 0) {
+//           document.getElementById("list").innerHTML = ``;
+//           let dropData = json.items.map((item) => {
+//             if ((item.position != undefined) & (item.position != ""))
+//               document.getElementById("list").innerHTML += `<li onClick="addMarkerToMap(${item.position.lat},${item.position.lng})">${item.title}</li>`;
+//             });
+//         }
+//       });
+//     }
+//   };

@@ -9,7 +9,9 @@ var searchInput = document.querySelector("#searchInput");
 
 //var searchInput = "Rozelle"
 
-`${getWeather} ajdflkajslkgsrlkgksld`
+// `${getWeather} ajdflkajslkgsrlkgksld`
+
+//Baseline API's before we start SPLICING them.
 
 fetch(getWeather)
     .then(function (response) {
@@ -37,147 +39,71 @@ fetch(getWeather)
 
 })
 
+//Next three sections are on creating an array for previous searches, with the 
+// ability to clear search browswers. Let me be clear, I STILL DON'T KNOW how
+// localStorage works.
+
+//section details how to add new searches to the localStorage, and adding the
+// new Search to the list in real time.
+
 $("#locationSearch").on("click", function() {
   console.log("have pressed a button");
   var newSearch = $(this).parent().siblings("#searchInput").val();
-        console.log(newSearch)
-        console.log(potentialLocations)
-        potentialLocations = potentialLocations.concat(newSearch);
-        console.log(potentialLocations)
+          console.log(newSearch)
+          console.log(potentialLocations)
+          potentialLocations = potentialLocations.concat(newSearch);
+          console.log(potentialLocations)
 
-         localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
-         searchInput.value = '';
-         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
-         console.log(showLocations);
-
-
+          localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
+          searchInput.value = '';
+          var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+          console.log(showLocations);
           var newSearchAdd = document.createElement('li');
           newSearchAdd.innerHTML = newSearch;
           console.log(newSearchAdd);
           prevSearch.appendChild(newSearchAdd);
-        
-
 });
 
-//if (localStorage.setItem("prevSearch", JSON.stringify("")) === null){
- 
- // localStorage.setItem("prevSearch", JSON.stringify(""));
-
-//$("#prevsearch li").val(localStorage.getItem("prevSearch"))
+// Providing content for HTML page on load.
 var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
 console.log(showLocations);
+
+// Now - for a good few hours I couldn't figure out why whenever I cleared
+// the localStorage file I was getting thrown an error, and I believe it was 
+// due to the fact that I was trying to call a key that had no object. This 
+// conditional and looping statements remediate the issue.
 
 if (!showLocations){
 console.log("Empty localStorage");
  localStorage.setItem("prevSearch", JSON.stringify(""));
- //var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
  console.log(showLocations);
-//var potentialLocations = showLocations;
  var potentialLocations = [];
 } else {
   var potentialLocations = showLocations;
-
 }
 
 
-// if (!showLocations === null){
 for (i=0; i < showLocations.length; i++) {
   var oldSearch = document.createElement('li');
   oldSearch.innerHTML = showLocations[i];
   prevSearch.appendChild(oldSearch);
-// } } else {
-//   var oldSearch = document.createElement('li');
-//  potentialLocations = [];
  }
+
+ // It's entirely possible for the page to become cluttered with too many searches,
+ // so we added a button to remove the localStorage. Interestingly, this proceeded
+ // to throw up continuous errors as the entire key was removed.
 
  $("#clearSearch").on("click", function(){
 
-  // localStorage.setItem("prevSearch","");
      localStorage.removeItem("prevSearch");
      localStorage.setItem("prevSearch","");
      localStorage.setItem("prevSearch", JSON.stringify(""));
- 
-    // prevSearch.removeChild(oldSearch);
      document.getElementById('prevSearch').innerHTML = "";
- 
-     //localStorage.setItem("prevSearch", "");
      potentialLocations = showLocations;
      console.log(showLocations);
      potentialLocations = [];
      console.log(potentialLocations);
  })
-
-// $("#locationSearch").on("click", function() {
-//   console.log("have pressed a button");
-//   var newSearch = $(this).parent().siblings("#searchInput").val();
-//         console.log(newSearch)
-//         console.log(potentialLocations)
-//         potentialLocations = potentialLocations.concat(newSearch);
-//         console.log(potentialLocations)
-
-//          localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
-//          searchInput.value = '';
-//          var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
-//          console.log(showLocations);
-
-
-//           var newSearchAdd = document.createElement('li');
-//           newSearchAdd.innerHTML = newSearch;
-//           console.log(newSearchAdd);
-//           prevSearch.appendChild(newSearchAdd);
-        
-
-// });
-
-
-
-// $("#clearSearch").on("click", function(){
-
-//  // localStorage.setItem("prevSearch","");
-//     localStorage.removeItem("prevSearch");
-//     localStorage.setItem("prevSearch","");
-//     localStorage.setItem("prevSearch", JSON.stringify(""));
-
-//    // prevSearch.removeChild(oldSearch);
-//     document.getElementById('prevSearch').innerHTML = "";
-
-//     //localStorage.setItem("prevSearch", "");
-//     var potentialLocations = showLocations;
-//     console.log(showLocations);
-//     potentialLocations = [""];
-//     console.log(potentialLocations);
-// })
-
-// for (i=0; i < potentialLocations.length; i++) {
-//         var oldSearch = document.createElement('li')
-//         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
-//         oldSearch.innerHTML = showLocations[i]
-//         prevSearch.appendChild(oldSearch);
-//         console.log(showLocations);
-// }
-//$("#08 #activityInput").val(localStorage.getItem("prevSearch"));
-
-
-        // $("#search").ajax({
-        //     url: 'https://api.positionstack.com/v1/forward',
-        //     data: {
-        //       access_key: '49a90276b4b1f782b1cb30297278b6dd',
-        //       query: '1600 Pennsylvania Ave NW - Washington',
-        //       limit: 1
-        //     }
-        //   }).done(function(data) {
-        //     console.log(JSON.parse(data));
-        //   });
-
-        // fetch('https://api.positionstack.com/v1/forward',{
-            
-        //     access_key: '49a90276b4b1f782b1cb30297278b6dd',
-        //       query: '1600 Pennsylvania Ave NW - Washington',
-        //       limit: 1
-        // }
-        // ).done(function(data){
-        //     console.log(JSON.parse(data));
-        // })
 
 var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276b4b1f782b1cb30297278b6dd&query=1600 Pennsylvania Ave NW - Washington"
 
@@ -204,29 +130,3 @@ var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntuj
 
 // and if you have time to be extra, add a Morning, afternoon and evening
 // in the top <span> where 'transactions' currently exist
-
-
-// https://geocoder.ls.hereapi.com/6.2/geocode.json
-// ?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc
-// &searchtext=425+W+Randolph+Chicago
-
-
-// const autosuggest = (e) => {
-//     if(event.metaKey) {
-//       return
-//     } 
-//     let searchString = e.value
-//     if (searchString != "") {
-//       fetch(`https://autosuggest.search.hereapi.com/v1/autosuggest?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&at=33.738045,73.084488&limit=5&resultType=city&q=${searchString}&lang=en-US`)
-//       .then(res => res.json())
-//       .then((json) => {
-//         if (json.length != 0) {
-//           document.getElementById("list").innerHTML = ``;
-//           let dropData = json.items.map((item) => {
-//             if ((item.position != undefined) & (item.position != ""))
-//               document.getElementById("list").innerHTML += `<li onClick="addMarkerToMap(${item.position.lat},${item.position.lng})">${item.title}</li>`;
-//             });
-//         }
-//       });
-//     }
-//   };

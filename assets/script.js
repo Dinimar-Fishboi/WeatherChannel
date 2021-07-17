@@ -39,9 +39,15 @@ fetch(getWeather)
 
 })
 
-//Next three sections are on creating an array for previous searches, with the 
+//Next four sections are on creating an array for previous searches, with the 
 // ability to clear search browswers. Let me be clear, I STILL DON'T KNOW how
 // localStorage works.
+
+// User can just select the location from the list and it PICKS IT UP
+$("#prevSearch").on("click", function(){
+  var prevChoice = event.target.textContent
+  console.log(prevChoice); 
+})
 
 //section details how to add new searches to the localStorage, and adding the
 // new Search to the list in real time.
@@ -87,6 +93,7 @@ for (i=0; i < showLocations.length; i++) {
   var oldSearch = document.createElement('li');
   oldSearch.innerHTML = showLocations[i];
   prevSearch.appendChild(oldSearch);
+  //var oldSearchSelected= event.currentTarget.textcontent
  }
 
  // It's entirely possible for the page to become cluttered with too many searches,
@@ -103,7 +110,7 @@ for (i=0; i < showLocations.length; i++) {
      console.log(showLocations);
      potentialLocations = [];
      console.log(potentialLocations);
- })
+ });
 
 var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276b4b1f782b1cb30297278b6dd&query=1600 Pennsylvania Ave NW - Washington"
 

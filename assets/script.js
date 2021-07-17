@@ -37,6 +37,27 @@ fetch(getWeather)
 
 })
 
+$("#locationSearch").on("click", function() {
+  console.log("have pressed a button");
+  var newSearch = $(this).parent().siblings("#searchInput").val();
+        console.log(newSearch)
+        console.log(potentialLocations)
+        potentialLocations = potentialLocations.concat(newSearch);
+        console.log(potentialLocations)
+
+         localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
+         searchInput.value = '';
+         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+         console.log(showLocations);
+
+
+          var newSearchAdd = document.createElement('li');
+          newSearchAdd.innerHTML = newSearch;
+          console.log(newSearchAdd);
+          prevSearch.appendChild(newSearchAdd);
+        
+
+});
 
 //if (localStorage.setItem("prevSearch", JSON.stringify("")) === null){
  
@@ -49,10 +70,10 @@ console.log(showLocations);
 if (!showLocations){
 console.log("Empty localStorage");
  localStorage.setItem("prevSearch", JSON.stringify(""));
- var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+ //var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
  console.log(showLocations);
 //var potentialLocations = showLocations;
- var potentialLocations = [""];
+ var potentialLocations = [];
 } else {
   var potentialLocations = showLocations;
 
@@ -80,33 +101,33 @@ for (i=0; i < showLocations.length; i++) {
      document.getElementById('prevSearch').innerHTML = "";
  
      //localStorage.setItem("prevSearch", "");
-     var potentialLocations = showLocations;
+     potentialLocations = showLocations;
      console.log(showLocations);
-     potentialLocations = [""];
+     potentialLocations = [];
      console.log(potentialLocations);
  })
 
-$("#locationSearch").on("click", function() {
-  console.log("have pressed a button");
-  var newSearch = $(this).parent().siblings("#searchInput").val();
-        console.log(newSearch)
-        console.log(potentialLocations)
-        potentialLocations = potentialLocations.concat(newSearch);
-        console.log(potentialLocations)
+// $("#locationSearch").on("click", function() {
+//   console.log("have pressed a button");
+//   var newSearch = $(this).parent().siblings("#searchInput").val();
+//         console.log(newSearch)
+//         console.log(potentialLocations)
+//         potentialLocations = potentialLocations.concat(newSearch);
+//         console.log(potentialLocations)
 
-         localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
-         searchInput.value = '';
-         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
-         console.log(showLocations);
+//          localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
+//          searchInput.value = '';
+//          var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+//          console.log(showLocations);
 
 
-          var newSearchAdd = document.createElement('li');
-          newSearchAdd.innerHTML = newSearch;
-          console.log(newSearchAdd);
-          prevSearch.appendChild(newSearchAdd);
+//           var newSearchAdd = document.createElement('li');
+//           newSearchAdd.innerHTML = newSearch;
+//           console.log(newSearchAdd);
+//           prevSearch.appendChild(newSearchAdd);
         
 
-});
+// });
 
 
 

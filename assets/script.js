@@ -1,7 +1,7 @@
 //Need Latitude and Longitude to complete API call. Have added own API already
 
 var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
-var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
+// var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 var prevSearch = document.getElementById("prevSearch");
 var placeName = document.querySelector("#placeName");
 var searchInput = document.querySelector("#searchInput");
@@ -20,25 +20,22 @@ fetch(getWeather)
         response.json().then(function(data){
             var openSun = data;
             console.log(openSun)
-          //  debugger
-            
+          //  debugger    
         })
         })
     
-        fetch(geoCode)
-.then(function (response) {
-  return response.json();
-})
-.then(function (data) {
-    console.log(data)
-    var searchLong = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
-    var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
-    console.log(searchLat);
-    console.log(searchLong);
-    
-  //  debugger
-
-})
+// fetch(geoCode)
+//   .then(function (response) {
+//     return response.json();
+//   })
+//     .then(function (data) {
+//         console.log(data)
+//         var searchLong = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+//         var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+//         console.log(searchLat);
+//         console.log(searchLong);
+//     //  debugger
+// })
 
 //Next four sections are on creating an array for previous searches, with the 
 // ability to clear search browswers. Let me be clear, I STILL DON'T KNOW how
@@ -117,10 +114,10 @@ for (i=0; i < showLocations.length; i++) {
      console.log(potentialLocations);
  });
 
-var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276b4b1f782b1cb30297278b6dd&query=1600 Pennsylvania Ave NW - Washington"
+// var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276b4b1f782b1cb30297278b6dd&query=1600 Pennsylvania Ave NW - Washington"
 
 
-var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
+// var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 
 
 // The 'event' in this instance is actually the location that we we will need to 
@@ -128,6 +125,21 @@ var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntuj
 function summonWeather(event){
   console.log("Okay - let's GO");
   console.log(event);
+  var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=" + event;
+  console.log(geoCode);
+    
+  fetch(geoCode)
+  .then(function (response) {
+    return response.json();
+  })
+    .then(function (data) {
+        console.log(data)
+        var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+        var searchLong = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+        console.log(searchLat);
+        console.log(searchLong);
+    //  debugger
+  })
 
 }
 // We need to call a Latitude and Longitude when entering the names of locations.

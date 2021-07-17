@@ -1,6 +1,6 @@
 //Need Latitude and Longitude to complete API call. Have added own API already
 
-var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
+var getWeather = "https://api.openweathermap.org/data/2.5/onecall?" + "lat=33.44" + "&" + "lon=-94.04" + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
 // var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 var prevSearch = document.getElementById("prevSearch");
 var placeName = document.querySelector("#placeName");
@@ -137,9 +137,23 @@ function summonWeather(event){
         var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
         var searchLong = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
         console.log(searchLat);
-        console.log(searchLong);
+        console.log(searchLong); 
+        // var getWeather = "https://api.openweathermap.org/data/2.5/onecall?" + searchLat + "&" + searchLong + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
+        // console.log(getWeather); 
+        // fetch(getWeather)
+        //   .then(function (response) {
+        //       console.log(response)
+        //       response.json().then(function(data){
+        //           var openSun = data;
+        //           console.log(openSun)
+        //         //  debugger    
+        //       })
+        //       })
     //  debugger
   })
+
+  // var getWeather = "https://api.openweathermap.org/data/2.5/onecall?" + searchLat + "&" + searchLong + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
+  // console.log(getWeather);
 
 }
 // We need to call a Latitude and Longitude when entering the names of locations.

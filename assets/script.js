@@ -4,6 +4,8 @@ var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=
 var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 var prevSearch = document.getElementById("prevSearch");
 var placeName = document.querySelector("#placeName");
+var searchInput = document.querySelector("#searchInput");
+//var potentialLocations = [];
 
 //var searchInput = "Rozelle"
 
@@ -39,16 +41,41 @@ $("#locationSearch").on("click", function() {
   console.log("have pressed a button");
   var newSearch = $(this).parent().siblings("#searchInput").val();
         console.log(newSearch)
+        potentialLocations = potentialLocations.concat(newSearch);
         // var hourTime = $(this).parent().attr("id");
-         localStorage.setItem("prevSearch", JSON.stringify(newSearch));
+
+         localStorage.setItem("prevSearch", JSON.stringify(potentialLocations));
         // console.log(hourTime)
-        var oldSearch = document.createElement('li');
-        var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
-        oldSearch.innerHTML = showLocations
-        prevSearch.appendChild(oldSearch);
+        searchInput.value = '';
+         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+        // console.log(showLocations);
+
+
+        for (i=0; i < showLocations.length; i++) {
+          var oldSearch = document.createElement('li');
+          oldSearch.innerHTML = showLocations[i];
+          prevSearch.appendChild(oldSearch);
+        }
 
 });
 
+var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+console.log(showLocations);
+var potentialLocations = showLocations;
+
+for (i=0; i < showLocations.length; i++) {
+  var oldSearch = document.createElement('li');
+  oldSearch.innerHTML = showLocations[i];
+  prevSearch.appendChild(oldSearch);
+}
+
+// for (i=0; i < potentialLocations.length; i++) {
+//         var oldSearch = document.createElement('li')
+//         var showLocations = JSON.parse(localStorage.getItem("prevSearch"));
+//         oldSearch.innerHTML = showLocations[i]
+//         prevSearch.appendChild(oldSearch);
+//         console.log(showLocations);
+// }
 //$("#08 #activityInput").val(localStorage.getItem("prevSearch"));
 
 

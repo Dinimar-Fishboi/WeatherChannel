@@ -163,20 +163,91 @@ function summonWeather(event){
                   $("#humid span").text(openSun.current.humidity);
                   $("#uvi span").text(openSun.current.uvi);
 
+                  if (openSun.current.uvi <= 2) {
+                    $("#uvi span").addClass("low");
+                    $("#uvi span").removeClass("moderate");
+                    $("#uvi span").removeClass("high");
+                    $("#uvi span").removeClass("vHigh");
+                    $("#uvi span").removeClass("eHigh");
+                    console.log("UV = low")
+                  } else if (openSun.current.uvi > 2 && openSun.current.uvi < 6) {
+                    $("#uvi span").removeClass("low");
+                    $("#uvi span").addClass("moderate");
+                    $("#uvi span").removeClass("high");
+                    $("#uvi span").removeClass("vHigh");
+                    $("#uvi span").removeClass("eHigh");
+                    console.log("UV = moderate")
+                   } else if (openSun.current.uvi > 5 && openSun.current.uvi < 8) {
+                    $("#uvi span").removeClass("low");
+                    $("#uvi span").removeClass("moderate");
+                    $("#uvi span").addClass("high");
+                    $("#uvi span").removeClass("vHigh");
+                    $("#uvi span").removeClass("eHigh");
+                    console.log("UV = high")
+                   } else if (openSun.current.uvi > 7 && openSun.current.uvi < 11) {
+                    $("#uvi span").removeClass("low");
+                    $("#uvi span").removeClass("moderate")
+                    $("#uvi span").removeClass("high")
+                    $("#uvi span").addClass("vHigh");
+                    $("#uvi span").removeClass("eHigh")
+                    console.log("UV = very high")
+                   } else if (openSun.current.uvi > 10) {
+                    $("#uvi span").removeClass("low");
+                    $("#uvi span").removeClass("moderate")
+                    $("#uvi span").removeClass("high")
+                    $("#uvi span").removeClass("vHigh");
+                    $("#uvi span").addClass("eHigh");
+                    console.log("UV = Extreme")
+                   }
+
                   var dailyWeather = openSun.daily;
                   console.log(dailyWeather);
                  $("#futureWeather").empty();
         //    debugger
 
                   for (i =1; i < 6; i++){
-                  //  $("#futureWeather").empty();
+                  
                     var futureIconCode = dailyWeather[i].weather[0].icon;
                     futureIconCode = "_" + futureIconCode;
                    // console.log(futureIconCode);
                     var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
                     console.log(futureUnixDt);
-                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p> UVi: " + dailyWeather[i].uvi + "</p>" + "</div>");
-                 
+                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
+                    if (dailyWeather[i].uvi <= 2) {
+                      $("#uvi span").addClass("low");
+                      $("#uvi span").removeClass("moderate");
+                      $("#uvi span").removeClass("high");
+                      $("#uvi span").removeClass("vHigh");
+                      $("#uvi span").removeClass("eHigh");
+                      console.log("UV = low")
+                    } else if (dailyWeather[i].uvi > 2 && dailyWeather[i].uvi < 6) {
+                      $("#uvi span").removeClass("low");
+                      $("#uvi span").addClass("moderate");
+                      $("#uvi span").removeClass("high");
+                      $("#uvi span").removeClass("vHigh");
+                      $("#uvi span").removeClass("eHigh");
+                      console.log("UV = moderate")
+                     } else if (dailyWeather[i].uvi > 5 && dailyWeather[i].uvi < 8) {
+                      $("#uvi span").removeClass("low");
+                      $("#uvi span").removeClass("moderate");
+                      $("#uvi span").addClass("high");
+                      $("#uvi span").removeClass("vHigh");
+                      $("#uvi span").removeClass("eHigh");
+                     } else if (dailyWeather[i].uvi > 7 && dailyWeather[i].uvi < 11) {
+                      $("#uvi span").removeClass("low");
+                      $("#uvi span").removeClass("moderate")
+                      $("#uvi span").removeClass("high")
+                      $("#uvi span").addClass("vHigh");
+                      $("#uvi span").removeClass("eHigh")
+                      console.log("UV = very high")
+                     } else if (dailyWeather[i].uvi > 10) {
+                      $("#uvi span").removeClass("low");
+                      $("#uvi span").removeClass("moderate")
+                      $("#uvi span").removeClass("high")
+                      $("#uvi span").removeClass("vHigh");
+                      $("#uvi span").addClass("eHigh");
+                      console.log("UV = Extreme")
+                     }
                   }
 
                  // $("#icon").addClass(iconCode);

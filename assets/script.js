@@ -8,6 +8,7 @@ var prevSearch = document.getElementById("prevSearch");
 var placeName = document.querySelector("#placeName");
 var searchInput = document.querySelector("#searchInput");
 var requestedForcast = "";
+var currentDay = document.getElementById("currentDay");
 //var potentialLocations = [];
 
 //var searchInput = "Rozelle"
@@ -163,6 +164,11 @@ function summonWeather(event){
                   var iconCode = openSun.current.weather[0].icon;
                   console.log(iconCode)
                   var imgUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png"
+                  console.log(imgUrl);
+                  var addedIcon = document.createElement("img");
+                  addedIcon.setAttribute("href", "imgUrl");
+                  currentDay.appendChild(addedIcon)
+            //  addedIcon.appendTo("#currentDay")
                   var unixDt = moment.unix(openSun.current.dt).format("DD-MM-YYYY");
                   console.log(unixDt);
                   $("#locationEvent").text(event)
@@ -175,7 +181,8 @@ function summonWeather(event){
                   $("#hummid span").text(openSun.current.humidity);
                   $("<p id='uvi'>UV index: <span></span></p>").appendTo("#currentDay");
                   $("#uvi span").text(openSun.current.uvi);
-                  $("<img src='imgUrl'>").appendTo("#currentDay");
+                  $("<img id='icon'>").appendTo("#currentDay");
+                  $("#currentDay img").addClass(iconCode);
                  // $("#icon span").addClass(openSun.current.weather[0].icon);
                 debugger  
               //  var currentLocation = data.response.current.humidity.value;

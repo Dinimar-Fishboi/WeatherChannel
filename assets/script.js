@@ -183,8 +183,10 @@ function summonWeather(event){
                   for (i =0; i < 5; i++){
                     var futureIconCode = dailyWeather[i].weather[0].icon;
                     futureIconCode = "_" + futureIconCode;
-                    console.log(futureIconCode);
-                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'></h4>" + "</div>");
+                   // console.log(futureIconCode);
+                    var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
+                    console.log(futureUnixDt);
+                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + ">" + "</p>" + "</div>");
                     $("#newCard").append($("<h4 id='location'></h4>"));
                 //     $("<h4 id='location'></h4>").appendTo("#newCard");
 

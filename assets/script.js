@@ -162,20 +162,23 @@ function summonWeather(event){
                   console.log(openSun.current.uvi);
                   console.log(openSun.current.dt);
                   console.log(openSun.current.weather[0].icon);
+          // okay everything below here is ACTUALLY required for currentDay
                   var iconCode = openSun.current.weather[0].icon;
+                  iconCode ="_" + iconCode
                   console.log(iconCode)
             //  addedIcon.appendTo("#currentDay")
                   var unixDt = moment.unix(openSun.current.dt).format("DD-MM-YYYY");
                   console.log(unixDt);
                   $("#locationEvent").text(event)
                   $("#locationEventDate").text(unixDt);
+                  $("#icon").addClass(iconCode);
                   $("#temp span").text(openSun.current.temp);
                   $("#windSpeed span").text(openSun.current.wind_speed);
                   $("#humid span").text(openSun.current.humidity);
                   $("#uvi span").text(openSun.current.uvi);
-                  $("#currentDay img").addClass(iconCode);
+                 // $("#icon").addClass(iconCode);
                  // $("#icon span").addClass(openSun.current.weather[0].icon);
-             //   debugger  
+             //  debugger  
               //  var currentLocation = data.response.current.humidity.value;
               //  console.log(currentLocation)
          })

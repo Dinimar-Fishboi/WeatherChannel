@@ -176,6 +176,49 @@ function summonWeather(event){
                   $("#windSpeed span").text(openSun.current.wind_speed);
                   $("#humid span").text(openSun.current.humidity);
                   $("#uvi span").text(openSun.current.uvi);
+
+                  var dailyWeather = openSun.daily;
+                  console.log(dailyWeather);
+
+                  for (i =0; i < 5; i++){
+                    var futureIconCode = dailyWeather[i].weather[0].icon;
+                    futureIconCode = "_" + futureIconCode;
+                    console.log(futureIconCode);
+                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'></h4>" + "</div>");
+                    $("#newCard").append($("<h4 id='location'></h4>"));
+                //     $("<h4 id='location'></h4>").appendTo("#newCard");
+
+                //     $("<div id='#newCard'></div>").appendTo('#futureWeather');
+
+                //   $("#newCard").append($("<h4 id='location'></h4>"));
+                //   $("#location").appendTo("#newCard");
+                //   $('#location').text(event);
+                // //  console.log(event);
+                //   $("<p id='futureIcon'></p>").appendTo("#newCard");
+                //   var futureIconCode = dailyWeather[i].weather[0].icon;
+                //   futureIconCode = "_" + futureIconCode;
+                //   $("<h4></h4>").appendTo("#newCard");
+                //   $('#location').text(event);
+                //   $("#futureIcon").addClass(futureIconCode);
+                //   $("<h5 id='futureDate'></h5>").appendTo("#newCard");
+                //   var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
+                //   $("#futureDate").text(futureUnixDt);
+
+                //   //================
+                //     var newCard = {
+                //       Humidity: dailyWeather[i].humidity,
+                //       Temp: dailyWeather[i].temp,
+                //       Date: moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY"),
+                //       Wind_Speed: dailyWeather[i].wind_speed,
+                //       UV: dailyWeather[i].uvi,
+                //     }
+
+                //     var newCard = document.createElement('div');
+                //     newCard.
+
+                 // debugger
+                  }
+
                  // $("#icon").addClass(iconCode);
                  // $("#icon span").addClass(openSun.current.weather[0].icon);
              //  debugger  

@@ -131,15 +131,12 @@ function summonWeather(event){
   console.log(event);
   var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=" + event;
   console.log(geoCode);
+  $("#currentDay img").removeClass();
     
   fetch(geoCode)
   .then(function (response) {
     return response.json();
   })
-  if (response === undefined){
-    alert("Check your spelling");
-    return;
-  }
     .then(function (data) {
         console.log(data)
         var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
@@ -167,11 +164,6 @@ function summonWeather(event){
                   console.log(openSun.current.weather[0].icon);
                   var iconCode = openSun.current.weather[0].icon;
                   console.log(iconCode)
-                  var imgUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png"
-                  console.log(imgUrl);
-                  var addedIcon = document.createElement("img");
-                  addedIcon.setAttribute("href", "imgUrl");
-                  currentDay.appendChild(addedIcon)
             //  addedIcon.appendTo("#currentDay")
                   var unixDt = moment.unix(openSun.current.dt).format("DD-MM-YYYY");
                   console.log(unixDt);

@@ -17,3 +17,8 @@ li {
     background-color: aliceblue ;
     color: black;
 }
+
+/*
+var imgUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png"
+console.log(imgUrl);
+*/

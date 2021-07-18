@@ -136,6 +136,10 @@ function summonWeather(event){
   .then(function (response) {
     return response.json();
   })
+  if (response === undefined){
+    alert("Check your spelling");
+    return;
+  }
     .then(function (data) {
         console.log(data)
         var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
@@ -179,7 +183,7 @@ function summonWeather(event){
                   $("#uvi span").text(openSun.current.uvi);
                   $("#currentDay img").addClass(iconCode);
                  // $("#icon span").addClass(openSun.current.weather[0].icon);
-                debugger  
+             //   debugger  
               //  var currentLocation = data.response.current.humidity.value;
               //  console.log(currentLocation)
          })

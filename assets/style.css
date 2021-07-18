@@ -242,3 +242,23 @@ h5{
     background-size: contain;
     object-fit: contain;
 }
+
+@media screen and (max-width: 991px) {
+    #searchBlock{
+        width: 80%;
+        margin: 2%;
+    }
+
+    #currentDay{
+        width: 80%;
+    }
+
+    h5 {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    
+}

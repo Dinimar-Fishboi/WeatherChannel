@@ -125,6 +125,8 @@ function summonWeather(event){
   var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=" + event;
   console.log(geoCode);
   $("#currentDay img").removeClass();
+
+  //Providing fetch block to get Latitude and Longitude coordinates.
     
   fetch(geoCode)
   .then(function (response) {
@@ -138,6 +140,7 @@ function summonWeather(event){
         console.log(searchLong); 
         var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + searchLat + "&lon=" + searchLong + "&units=metric&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
 
+        // Fetch block within fetch block to use searchLat and searchLong functions to gather location.
         console.log(getWeather); 
         fetch(getWeather)
           .then(function (response) {
@@ -148,11 +151,10 @@ function summonWeather(event){
               .then(function(data){
                   var openSun = data;
 
-          // okay everything below here is ACTUALLY required for currentDay
+          // okay everything below here is ACTUALLY required for currentDay, aka gathering information to display in HTML
                   var iconCode = openSun.current.weather[0].icon;
                   iconCode ="_" + iconCode
                   console.log(iconCode)
-            //  addedIcon.appendTo("#currentDay")
                   var unixDt = moment.unix(openSun.current.dt).format("DD-MM-YYYY");
                   console.log(unixDt);
                   $("#locationEvent").text(event)
@@ -162,6 +164,8 @@ function summonWeather(event){
                   $("#windSpeed span").text(openSun.current.wind_speed);
                   $("#humid span").text(openSun.current.humidity);
                   $("#uvi span").text(openSun.current.uvi);
+
+                //UVI index indicator.
 
                   if (openSun.current.uvi <= 2) {
                     $("#currentDay #uvi span").addClass("low");
@@ -205,40 +209,18 @@ function summonWeather(event){
                  $("#futureWeather").empty();
                  $("#futureWeather").append("<h4>5 Day Forecast</h4>");
 
-        //    debugger
+        //    Providing 5 day forcast - we're using i=1 and i, 6 so that we don't get the first array, as that appears to 
+        //    just be a repeat of current day info.
 
                   for (i =1; i < 6; i++){
                   
                     var futureIconCode = dailyWeather[i].weather[0].icon;
                     futureIconCode = "_" + futureIconCode;
-                   // console.log(futureIconCode);
                     var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
                     console.log(futureUnixDt);
-                  //  $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
-                  //  "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>"
                     $("#futureWeather").append("<div id='#newCard'>" +  "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
 
                   }
          })
    });
 }
-  
-// We need to call a Latitude and Longitude when entering the names of locations.
-
-// We are going to need to add prev. searches to the local storage, that the 
-// user can reuse in the app (aka the info is Cached)
-
-// From the OpenWeatherMap API, we need to pull
-// 1. Name of place
-// 2. Date of Current day
-// 3. Icon reflective of weather (Font Awesome)
-// 4. Temperature
-// 5. Humidity
-// 6. Wind speed
-// 7. UV index (also add colour to reflect UV warnings)
-
-// We also need this for the next 5 days.
-
-
-// and if you have time to be extra, add a Morning, afternoon and evening
-// in the top <span> where 'transactions' currently exist

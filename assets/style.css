@@ -65,6 +65,12 @@ li {
     align-self: flex-start;
 }
 
+#newCard {
+    background-color: rgb(2, 122, 197);
+    color: white;
+
+}
+
 .low{
     background-color: green;
 }

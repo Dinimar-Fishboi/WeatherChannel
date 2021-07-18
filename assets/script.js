@@ -218,7 +218,7 @@ function summonWeather(event){
                     futureIconCode = "_" + futureIconCode;
                     var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
                     console.log(futureUnixDt);
-                    $("#futureWeather").append("<div id='#newCard'>" +  "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
+                    $("#futureWeather").append("<div id='#newCard'>" +  "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
 
                   }
          })

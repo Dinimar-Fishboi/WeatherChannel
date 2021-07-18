@@ -1,7 +1,4 @@
-* {
-    color: black;
 
-}
 
 .mainContent{
     display: flex;
@@ -59,15 +56,26 @@ li {
     flex-direction: row;
     margin: 3%;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 #futureWeather h4{
     align-self: flex-start;
 }
 
-#newCard {
+h5{
+    margin: 4%;
+}
+
+#futureWeather div{
     background-color: rgb(2, 122, 197);
     color: white;
+    margin: 1%;
+    border-radius: 10px;
+}
+
+#futureWeather h5 p {
+    margin: 1px;
 
 }
 

@@ -173,15 +173,10 @@ function summonWeather(event){
                   console.log(unixDt);
                   $("#locationEvent").text(event)
                   $("#locationEventDate").text(unixDt);
-                  $("<p id='temp'>Temp: <span></span></p>").appendTo("#currentDay");
                   $("#temp span").text(openSun.current.temp);
-                  $("<p id='windSpeed'>Wind Speed: <span></span></p>").appendTo("#currentDay");
                   $("#windSpeed span").text(openSun.current.wind_speed);
-                  $("<p id='humid'>Humidity: <span></span></p>").appendTo("#currentDay");
-                  $("#hummid span").text(openSun.current.humidity);
-                  $("<p id='uvi'>UV index: <span></span></p>").appendTo("#currentDay");
+                  $("#humid span").text(openSun.current.humidity);
                   $("#uvi span").text(openSun.current.uvi);
-                  $("<img id='icon'>").appendTo("#currentDay");
                   $("#currentDay img").addClass(iconCode);
                  // $("#icon span").addClass(openSun.current.weather[0].icon);
                 debugger  

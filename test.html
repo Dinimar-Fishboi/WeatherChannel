@@ -15,20 +15,6 @@
     </div>
   </div>
 <div class="mainContent">
-  <div class="locations col-4">
-    <div class="input-group searchField">
-      <div class="newSearch">
-        <input id="searchInput" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-        <div class="input-group-append">
-          <button class="btn btn-success" type="button" id="locationSearch">Search</button>
-        </div>
-      </div>
-      <div>
-        <ol id="prevSearch"></ol>
-        <button class="btn btn-success" type="button" id="clearSearch">Clear</button>
-      </div>
-    </div>
-  </div>
   <div id="currentDay">
     <h2 id="locationEvent">
       City/Town/Suburb
@@ -42,12 +28,25 @@
       <p id='windSpeed'>Wind Speed: <span></span></p>
       <p id='humid'>Humidity: <span></span></p>
       <p id='uvi'>UV index: <span></span></p>
-
   </div>
+    <div id="searchBlock" class="locations col-4">
+      <div class="input-group searchField">
+        <div class="newSearch">
+          <input id="searchInput" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+          <div class="input-group-append">
+            <button class="btn btn-success" type="button" id="locationSearch">Search</button>
+          </div>
+        </div>
+        <div>
+          <ol id="prevSearch"></ol>
+          <button class="btn btn-success" type="button" id="clearSearch">Clear</button>
+        </div>
+      </div>
+    </div>
+</div>    
   <div id="futureWeather">
-
   </div>
-</div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

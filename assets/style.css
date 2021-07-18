@@ -6,7 +6,17 @@
 .mainContent{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
 
+#searchBlock{
+    width: 40%;
+    margin: 2%;
+}
+
+#searchBlock ol {
+    text-align: center;
 }
 
 .searchField {
@@ -18,6 +28,13 @@
     width: 100%;
 }
 
+li {
+    background-color: aliceblue ;
+    color: black;
+    list-style: none;
+    margin: 2px;
+}
+
 .btn-success{
     margin: 3%;
     width: 94%;
@@ -27,10 +44,25 @@
     color: black;
 }
 
-#uvi span {
+#currentDay{
+    width: 40%;
+}
+
+#currentDay #uvi span {
     color: white;
-    padding: 2%;
+    padding: 3%;
     border-radius: 20px;
+}
+
+#futureWeather{
+    display: flex;
+    flex-direction: row;
+    margin: 3%;
+    justify-content: space-evenly;
+}
+
+#futureWeather h4{
+    align-self: flex-start;
 }
 
 .low{
@@ -38,7 +70,7 @@
 }
 
 .moderate{
-    background-color: rgb(209, 188, 2);
+    background-color: rgb(226, 204, 3);
 }
 
 .high {
@@ -52,16 +84,6 @@
 .eHigh{
     background-color: royalblue;
 }
-
-li {
-    background-color: aliceblue ;
-    color: black;
-}
-
-/*
-var imgUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png"
-console.log(imgUrl);
-*/
 
 ._01d{
     background-image: url("http://openweathermap.org/img/wn/01d@2x.png");

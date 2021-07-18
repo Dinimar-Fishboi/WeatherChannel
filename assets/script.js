@@ -184,7 +184,7 @@ function summonWeather(event){
                     $("#currentDay #uvi span").removeClass("vHigh");
                     $("#currentDay #uvi span").removeClass("eHigh");
                     console.log("UV = high")
-                   } else if (openSun.current.uvi > 7 && openSun.current.uvi < 11) {
+                   } else if (openSun.current.uvi >= 7 && openSun.current.uvi < 11) {
                     $("#currentDay #uvi span").removeClass("low");
                     $("#currentDay #uvi span").removeClass("moderate")
                     $("#currentDay #uvi span").removeClass("high")
@@ -203,6 +203,8 @@ function summonWeather(event){
                   var dailyWeather = openSun.daily;
                   console.log(dailyWeather);
                  $("#futureWeather").empty();
+                 $("#futureWeather").append("<h4>5 Day Forecast</h4>");
+
         //    debugger
 
                   for (i =1; i < 6; i++){
@@ -212,17 +214,12 @@ function summonWeather(event){
                    // console.log(futureIconCode);
                     var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
                     console.log(futureUnixDt);
-                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
-                    
-                  }
+                  //  $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
+                  //  "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>"
+                    $("#futureWeather").append("<div id='#newCard'>" +  "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p id='uvi'> UV: <span>" + dailyWeather[i].uvi + "</span></p>" + "</div>");
 
-                 // $("#icon").addClass(iconCode);
-                 // $("#icon span").addClass(openSun.current.weather[0].icon);
-             //  debugger  
-              //  var currentLocation = data.response.current.humidity.value;
-              //  console.log(currentLocation)
+                  }
          })
-      //  })
    });
 }
   

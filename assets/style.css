@@ -27,11 +27,31 @@
     color: black;
 }
 
-/*
-.locations {
-    width: 30%; 
-    margin: 3%;
-}*/
+#uvi span {
+    color: white;
+    padding: 2%;
+    border-radius: 20px;
+}
+
+.low{
+    background-color: green;
+}
+
+.moderate{
+    background-color: rgb(209, 188, 2);
+}
+
+.high {
+    background-color: orange;
+}
+
+.vHigh{
+    background-color: red;
+}
+
+.eHigh{
+    background-color: royalblue;
+}
 
 li {
     background-color: aliceblue ;

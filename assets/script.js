@@ -98,7 +98,6 @@ for (i=0; i < showLocations.length; i++) {
   var oldSearch = document.createElement('li');
   oldSearch.innerHTML = showLocations[i];
   prevSearch.appendChild(oldSearch);
-  //var oldSearchSelected= event.currentTarget.textcontent
  }
 
  // It's entirely possible for the page to become cluttered with too many searches,
@@ -116,12 +115,6 @@ for (i=0; i < showLocations.length; i++) {
      potentialLocations = [];
      console.log(potentialLocations);
  });
-
-// var positionstack ="https://api.positionstack.com/v1/forward?access_key=49a90276b4b1f782b1cb30297278b6dd&query=1600 Pennsylvania Ave NW - Washington"
-
-
-// var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
-
 
 // The 'event' in this instance is actually the location that we we will need to 
 // find the Latitude and Longitude for. The user is redirected to this function 
@@ -154,14 +147,7 @@ function summonWeather(event){
           })
               .then(function(data){
                   var openSun = data;
-                  console.log(openSun);
-                  console.log(event);
-                  console.log(openSun.current.humidity);
-                  console.log(openSun.current.temp);
-                  console.log(openSun.current.wind_speed);
-                  console.log(openSun.current.uvi);
-                  console.log(openSun.current.dt);
-                  console.log(openSun.current.weather[0].icon);
+
           // okay everything below here is ACTUALLY required for currentDay
                   var iconCode = openSun.current.weather[0].icon;
                   iconCode ="_" + iconCode
@@ -179,46 +165,18 @@ function summonWeather(event){
 
                   var dailyWeather = openSun.daily;
                   console.log(dailyWeather);
+                 $("#futureWeather").empty();
+        //    debugger
 
-                  for (i =0; i < 5; i++){
+                  for (i =1; i < 6; i++){
+                  //  $("#futureWeather").empty();
                     var futureIconCode = dailyWeather[i].weather[0].icon;
                     futureIconCode = "_" + futureIconCode;
                    // console.log(futureIconCode);
                     var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
                     console.log(futureUnixDt);
-                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + ">" + "</p>" + "</div>");
-                    $("#newCard").append($("<h4 id='location'></h4>"));
-                //     $("<h4 id='location'></h4>").appendTo("#newCard");
-
-                //     $("<div id='#newCard'></div>").appendTo('#futureWeather');
-
-                //   $("#newCard").append($("<h4 id='location'></h4>"));
-                //   $("#location").appendTo("#newCard");
-                //   $('#location').text(event);
-                // //  console.log(event);
-                //   $("<p id='futureIcon'></p>").appendTo("#newCard");
-                //   var futureIconCode = dailyWeather[i].weather[0].icon;
-                //   futureIconCode = "_" + futureIconCode;
-                //   $("<h4></h4>").appendTo("#newCard");
-                //   $('#location').text(event);
-                //   $("#futureIcon").addClass(futureIconCode);
-                //   $("<h5 id='futureDate'></h5>").appendTo("#newCard");
-                //   var futureUnixDt = moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY");
-                //   $("#futureDate").text(futureUnixDt);
-
-                //   //================
-                //     var newCard = {
-                //       Humidity: dailyWeather[i].humidity,
-                //       Temp: dailyWeather[i].temp,
-                //       Date: moment.unix(dailyWeather[i].dt).format("DD-MM-YYYY"),
-                //       Wind_Speed: dailyWeather[i].wind_speed,
-                //       UV: dailyWeather[i].uvi,
-                //     }
-
-                //     var newCard = document.createElement('div');
-                //     newCard.
-
-                 // debugger
+                    $("#futureWeather").append("<div id='#newCard'>" + "<h4 id='location'>" + event + "</h4>" + "<p id='icon' class='" + futureIconCode + "'>" + "</p>" + "<h5 id='futureEventDate'>" + futureUnixDt + "</h5>" + "<p>Temp: " + dailyWeather[i].temp.day + "</p>" + "<p> Wind Speed: " + dailyWeather[i].wind_speed + "</p>" + "<p> Humidity: " + dailyWeather[i].humidity + "</p>" + "<p> UVi: " + dailyWeather[i].uvi + "</p>" + "</div>");
+                 
                   }
 
                  // $("#icon").addClass(iconCode);

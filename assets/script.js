@@ -123,7 +123,8 @@ for (i=0; i < showLocations.length; i++) {
 
 
 // The 'event' in this instance is actually the location that we we will need to 
-// find the Latitude and Longitude for.
+// find the Latitude and Longitude for. The user is redirected to this function 
+// when entering a new location search or selecting a previous search.
 function summonWeather(event){
   console.log("Okay - let's GO");
   console.log(event);
@@ -140,27 +141,48 @@ function summonWeather(event){
         var searchLong = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
         console.log(searchLat);
         console.log(searchLong); 
-        var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + searchLat + "&lon=" + searchLong + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
+        var getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + searchLat + "&lon=" + searchLong + "&units=metric&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
 
-        // var getWeather = "https://api.openweathermap.org/data/2.5/onecall?" + searchLat + "&" + searchLong + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
         console.log(getWeather); 
         fetch(getWeather)
           .then(function (response) {
-              console.log(response)
-              response.json().then(function(data){
+            var weatherResponse = response;
+              console.log(weatherResponse)
+              return weatherResponse.json();
+          })
+              .then(function(data){
                   var openSun = data;
-                  console.log(openSun)
-        //         //  debugger    
-        //       })
-        //       })
-    //  debugger
+                  console.log(openSun);
+                  console.log(event);
+                  console.log(openSun.current.humidity);
+                  console.log(openSun.current.temp);
+                  console.log(openSun.current.wind_speed);
+                  console.log(openSun.current.uvi);
+                  console.log(openSun.current.dt);
+                  console.log(openSun.current.weather[0].icon);
+                  var iconCode = openSun.current.weather[0].icon;
+                  console.log(iconCode)
+                  var imgUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png"
+                  var unixDt = moment.unix(openSun.current.dt).format("DD-MM-YYYY");
+                  console.log(unixDt);
+                  $("#locationEvent").text(event)
+                  $("#locationEventDate").text(unixDt);
+                  $("<p id='temp'>Temp: <span></span></p>").appendTo("#currentDay");
+                  $("#temp span").text(openSun.current.temp);
+                  $("<p id='windSpeed'>Wind Speed: <span></span></p>").appendTo("#currentDay");
+                  $("#windSpeed span").text(openSun.current.wind_speed);
+                  $("<p id='humid'>Humidity: <span></span></p>").appendTo("#currentDay");
+                  $("#hummid span").text(openSun.current.humidity);
+                  $("<p id='uvi'>UV index: <span></span></p>").appendTo("#currentDay");
+                  $("#uvi span").text(openSun.current.uvi);
+                  $("<img src='imgUrl'>").appendTo("#currentDay");
+                 // $("#icon span").addClass(openSun.current.weather[0].icon);
+                debugger  
+              //  var currentLocation = data.response.current.humidity.value;
+              //  console.log(currentLocation)
          })
-
-  // var getWeather = "https://api.openweathermap.org/data/2.5/onecall?" + searchLat + "&" + searchLong + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
-  // console.log(getWeather);
-
-  })
-    });
+      //  })
+   });
 }
   
 // We need to call a Latitude and Longitude when entering the names of locations.

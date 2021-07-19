@@ -207,7 +207,8 @@ function summonWeather(event){
                   var dailyWeather = openSun.daily;
                   console.log(dailyWeather);
                  $("#futureWeather").empty();
-                 $("#futureWeather").append("<h4>5 Day Forecast</h4>");
+                 document.body.children[1].children[1].children[1].style.display = "block"
+                 //     $("#futureWeather").append("<h4>5 Day Forecast</h4>");
 
         //    Providing 5 day forcast - we're using i=1 and i, 6 so that we don't get the first array, as that appears to 
         //    just be a repeat of current day info.

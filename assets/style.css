@@ -1,4 +1,10 @@
+*{
+    font-family: 'Vollkorn', serif;
+}
 
+.weatherVar{
+    display: flex;
+}
 
 .mainContent{
     display: flex;
@@ -14,6 +20,8 @@
 
 #searchBlock ol {
     text-align: center;
+    padding-left: 0%;
+    padding-top: 1%;
 }
 
 .searchField {
@@ -29,7 +37,8 @@ li {
     background-color: aliceblue ;
     color: black;
     list-style: none;
-    margin: 2px;
+    margin-top: 1%;
+    padding: 1%;
 }
 
 .btn-success{
@@ -47,7 +56,7 @@ li {
 
 #currentDay #uvi span {
     color: white;
-    padding: 3%;
+    padding: 2%;
     border-radius: 20px;
 }
 
@@ -74,9 +83,8 @@ h5{
     border-radius: 10px;
 }
 
-#futureWeather h5 p {
-    margin: 1px;
-
+.fiveDay{
+    display: none;
 }
 
 .low{

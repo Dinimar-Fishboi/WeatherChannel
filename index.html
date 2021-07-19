@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
     <title>Weather Channel</title>
@@ -14,38 +15,46 @@
       <p class="lead">Enter your City/Town/Suburb for the latest updates</p>
     </div>
   </div>
-<div class="mainContent">
-  <div id="currentDay">
-    <h2 id="locationEvent">
-      City/Town/Suburb
-    </h2>
-    <p id="icon"></p>
-    <h3 id="locationEventDate">
-      DD/MM/YYYY
-    </h3>
-    <div id="stats"></div>
-      <p id='temp'>Temp: <span></span></p>
-      <p id='windSpeed'>Wind Speed: <span></span></p>
-      <p id='humid'>Humidity: <span></span></p>
-      <p id='uvi'>UV index: <span></span></p>
-  </div>
-    <div id="searchBlock" class="locations col-4">
-      <div class="input-group searchField">
-        <div class="newSearch">
-          <input id="searchInput" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <button class="btn btn-success" type="button" id="locationSearch">Search</button>
-          </div>
+<div class="weatherVar">
+  <div id="searchBlock" class="locations col-3">
+    <div class="input-group searchField">
+      <h3>Enter a locale</h3>
+      <div class="newSearch">
+        <input id="searchInput" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        <div class="input-group-append">
+          <button class="btn btn-success" type="button" id="locationSearch">Search</button>        <button class="btn btn-success" type="button" id="clearSearch">Clear</button>
+
         </div>
-        <div>
-          <ol id="prevSearch"></ol>
-          <button class="btn btn-success" type="button" id="clearSearch">Clear</button>
+      </div>
+      <div>
+        <ol id="prevSearch"></ol>
+      </div>
+    </div>
+  </div>
+  <div class="mainContent">
+    <div id="currentDay">
+      <h2 id="locationEvent">
+        City/Town/Suburb
+      </h2>
+      <p id="icon"></p>
+      <h3 id="locationEventDate">
+        DD/MM/YYYY
+      </h3>
+      <div id="stats"></div>
+        <p id='temp'>Temp: <span></span></p>
+        <p id='windSpeed'>Wind Speed: <span></span></p>
+        <p id='humid'>Humidity: <span></span></p>
+        <p id='uvi'>UV index: <span></span></p>
+    </div>
+      <div class="fiveDay">
+        <h4>5 Day Forecast</h4>
+        <div id="futureWeather">
         </div>
       </div>
     </div>
-</div>    
-  <div id="futureWeather">
-  </div>
+</div>
+   
+  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

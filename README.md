@@ -2,6 +2,8 @@
 
 ## Deployed site
 
+https://dinimar-fishboi.github.io/WeatherChannel/
+
 ## About
 
 This Weather dashboard uses a combination of jQuery, Bootstrap, Google Fonts and 2 different API's to execute a dynamically ammended, responsive weather channel.
@@ -12,7 +14,7 @@ Any searches the user has made previously will be stored underneath the search f
 
 1. https://openweathermap.org/api/one-call-api)
 2. https://geocode.search.hereapi.com/v1/
-    geocode
-    ?q=5+Rue+Daunou%2C+75000+Paris%2C+France
 
 ## Screenshot
+![Screen Shot 2021-07-21 at 00 40 57](https://user-images.githubusercontent.com/83541287/126343909-f4218396-d855-4ae7-8a5d-a10a84919900.png)
+

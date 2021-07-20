@@ -8,14 +8,14 @@
     <title>Weather Channel</title>
 </head>
 <body>
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron col-12 jumbotron-fluid">
     <div class="container">
-      <h1 class="display-3">Weather Channel</h1>
+      <h2 class="display-3">Weather Channel</h2>
       <p class="lead">Enter your City/Town/Suburb for the latest updates</p>
     </div>
   </div>
 <div class="weatherVar">
-  <div id="searchBlock" class="locations col-2">
+  <div id="searchBlock" class="locations col-lg-2 col-sm-12">
     <div class="input-group searchField">
       <h3>Enter a place</h3>
       <div class="newSearch">
@@ -30,15 +30,16 @@
       </div>
     </div>
   </div>
-  <div class="mainContent">
+  <br>
+  <div class="mainContent col-lg-8 col-sm-12">
     <div id="currentDay">
       <section class="currentHeader">
         <h2 id="locationEvent">
-          City/Town/Suburb
+          Location
         </h2>
         <p id="icon"></p>
         <h3 id="locationEventDate">
-          DD/MM/YYYY
+          DD-MM-YYYY
         </h3>
      </section>
       <div id="stats">

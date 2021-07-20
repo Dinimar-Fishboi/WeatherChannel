@@ -2,15 +2,20 @@
     font-family: 'Spartan', sans-serif;
 }
 
+.display-3 {
+    font-size: 3.5rem;
+}
+
 .weatherVar{
     display: flex;
+    justify-content: space-between;
 }
 
 .mainContent{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 #searchBlock{
@@ -36,8 +41,7 @@ li {
     background-color: aliceblue ;
     color: black;
     list-style: none;
-    margin-top: 1%;
-    padding: 1%;
+    margin: 2% 0%;
 }
 
 .btn-success{
@@ -252,6 +256,11 @@ h5{
 }
 
 @media screen and (max-width: 991px) {
+
+    .weatherVar{
+        flex-direction: column;
+    }
+
     #searchBlock{
         width: 80%;
         margin: 2%;

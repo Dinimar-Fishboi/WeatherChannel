@@ -147,8 +147,10 @@ function summonWeather(event){
             var weatherResponse = response;
               console.log(weatherResponse)
               return weatherResponse.json();
+              
           })
               .then(function(data){
+
                   var openSun = data;
 
           // okay everything below here is ACTUALLY required for currentDay, aka gathering information to display in HTML
@@ -159,6 +161,7 @@ function summonWeather(event){
                   console.log(unixDt);
                   $("#locationEvent").text(event)
                   $("#locationEventDate").text(unixDt);
+                  $("#icon").removeClass();
                   $("#icon").addClass(iconCode);
                   $("#temp span").text(openSun.current.temp);
                   $("#windSpeed span").text(openSun.current.wind_speed);
@@ -207,7 +210,7 @@ function summonWeather(event){
                   var dailyWeather = openSun.daily;
                   console.log(dailyWeather);
                  $("#futureWeather").empty();
-                 document.body.children[1].children[1].children[1].style.display = "block"
+                 document.body.children[1].children[2].children[1].style.display = "block"
                  //     $("#futureWeather").append("<h4>5 Day Forecast</h4>");
 
         //    Providing 5 day forcast - we're using i=1 and i, 6 so that we don't get the first array, as that appears to 

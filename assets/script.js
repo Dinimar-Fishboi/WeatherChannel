@@ -1,44 +1,8 @@
-//Need Latitude and Longitude to complete API call. Have added own API already
-
-//var getWeather = "https://api.openweathermap.org/data/2.5/onecall?" + "lat=41.88425" + "&" + "lon=-87.63245" + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
-//var getWeather = "https://api.openweathermap.org/data/2.5/onecall?" + "lat=33.44" + "&" + "lon=-94.04" + "&exclude=minutely,hourly&appid=15ded98cd7617010730249cbf7259a51"
-
-// var geoCode = "https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=StKE5ntujYcwTdcZgQpPEPH6CdHp-5aGMlrv-cHiTtc&searchtext=Rozelle+Sydney" //+ searchInput
 var prevSearch = document.getElementById("prevSearch");
 var placeName = document.querySelector("#placeName");
 var searchInput = document.querySelector("#searchInput");
 var requestedForcast = "";
 var currentDay = document.getElementById("currentDay");
-//var potentialLocations = [];
-
-//var searchInput = "Rozelle"
-
-// `${getWeather} ajdflkajslkgsrlkgksld`
-
-//Baseline API's before we start SPLICING them.
-
-// fetch(getWeather)
-//     .then(function (response) {
-//         console.log(response)
-//         response.json().then(function(data){
-//             var openSun = data;
-//             console.log(openSun)
-//           //  debugger    
-//         })
-//         })
-    
-// fetch(geoCode)
-//   .then(function (response) {
-//     return response.json();
-//   })
-//     .then(function (data) {
-//         console.log(data)
-//         var searchLong = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
-//         var searchLat = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
-//         console.log(searchLat);
-//         console.log(searchLong);
-//     //  debugger
-// })
 
 //Next four sections are on creating an array for previous searches, with the 
 // ability to clear search browswers. Let me be clear, I STILL DON'T KNOW how
@@ -213,8 +177,8 @@ function summonWeather(event){
                  document.body.children[1].children[2].children[1].style.display = "block"
                  //     $("#futureWeather").append("<h4>5 Day Forecast</h4>");
 
-        //    Providing 5 day forcast - we're using i=1 and i, 6 so that we don't get the first array, as that appears to 
-        //    just be a repeat of current day info.
+                  //    Providing 5 day forcast - we're using i=1 and i, 6 so that we don't get the first array, as that appears to 
+                  //    just be a repeat of current day info.
 
                   for (i =1; i < 6; i++){
                   

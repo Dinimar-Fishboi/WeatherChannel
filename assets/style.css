@@ -257,9 +257,7 @@ h5{
 
 @media screen and (max-width: 991px) {
 
-    .weatherVar{
-        flex-direction: column;
-    }
+  
 
     #searchBlock{
         width: 80%;
@@ -281,5 +279,15 @@ h5{
 
 
 @media screen and (max-width: 767px) {
-    
+
+    .weatherVar{
+        flex-direction: column;
+    }
+
+    #currentDay {
+        flex-direction: row;
+        margin-top: 17%;
+        margin-bottom: 5%;
+    }
+
 }

@@ -4,19 +4,17 @@
 
 .weatherVar{
     display: flex;
-    justify-content: space-around;
 }
 
 .mainContent{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
 }
 
 #searchBlock{
     width: 40%;
-    margin: 2%;
 }
 
 #searchBlock ol {
@@ -52,8 +50,9 @@ li {
 }
 
 #currentDay{
-    width: 70%;
+    width: 35%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -66,9 +65,6 @@ li {
 #futureWeather{
     display: flex;
     flex-direction: row;
-    margin: 3%;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
 }
 
 #futureWeather h4{
@@ -84,6 +80,7 @@ h5{
     color: white;
     margin: 1%;
     border-radius: 10px;
+    padding-right: 2%;
 }
 
 .fiveDay{
@@ -266,6 +263,10 @@ h5{
 
     h5 {
         display: none;
+    }
+
+    #futureWeather{
+        flex-wrap: wrap;
     }
 }
 

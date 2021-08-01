@@ -23,6 +23,10 @@ Any searches the user has made previously will be stored underneath the search f
 ## Screenshot
 ![Screen Shot 2021-07-21 at 00 40 57](https://user-images.githubusercontent.com/83541287/126343909-f4218396-d855-4ae7-8a5d-a10a84919900.png)
 
+## Contact
+email: dev.fish.studio@protonmail.com
+portfolio: https://dinimar-fishboi.github.io/Dev.Fish/
+
 The MIT License (MIT)
 Copyright © 2021 Tayla Tallis
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
